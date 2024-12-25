@@ -1,61 +1,25 @@
-import { useState } from "react"
-import { motion } from "framer-motion"
-import Header from "@/components/layout/Header"
-import HeroBanner from "@/components/hero/HeroBanner"
-import UploadSection from "@/components/UploadSection"
-import Questionnaire from "@/components/Questionnaire"
-import Partners from "@/components/sections/Partners"
-import LoginModal from "@/components/modals/LoginModal"
-import SatisfactionModal from "@/components/modals/SatisfactionModal"
-import CareerRoadmap from "@/components/CareerRoadmap"
-import { useModals } from "@/hooks/useModals"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import AuthCard from "./components/auth/AuthCard";
+import Forget from "./components/auth/Forget";
+import Reset from "./components/auth/Reset";
+// import Signup from "./components/auth/Singup";
+// import Login from "./components/auth/Login";
 
 export default function App() {
-  const [step, setStep] = useState<"upload" | "questionnaire" | "roadmap">("upload")
-  const [answers, setAnswers] = useState<Record<number, number>>({})
-  const { isOpen, openModal, closeModal } = useModals()
-
-  const handleUploadComplete = () => {
-    setStep("questionnaire")
-    openModal("login")
-  }
-
-  const handleQuestionnaireComplete = () => {
-    setStep("roadmap")
-    openModal("satisfaction")
-  }
-
-  const handleSatisfactionComplete = () => {
-    closeModal("satisfaction")
-  }
-
-  const handleAnswer = (questionId: number, value: number) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: value }))
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-purple-50">
-      <Header />
-      <HeroBanner />
-      <main className="container mx-auto px-4 py-8">
-        {step === "upload" && <UploadSection onComplete={handleUploadComplete} />}
-        {step === "questionnaire" && (
-          <Questionnaire
-            onAnswer={handleAnswer}
-            onComplete={handleQuestionnaireComplete}
-          />
-        )}
-        {step === "roadmap" && <CareerRoadmap name="Future Engineer" answers={answers} />}
+    <Router>
 
-        <Partners />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/signup" element={<Signup/>} />
+        <Route path="/login" element={<Login/>}/> */}
+        <Route path="/auth" element={<AuthCard/>}/>
+        <Route path='/forget' element={<Forget/>}/>
+        <Route path='/reset' element={<Reset/>}/>
 
-      <LoginModal isOpen={isOpen("login")} onClose={() => closeModal("login")} />
-      <SatisfactionModal
-        isOpen={isOpen("satisfaction")}
-        onClose={() => closeModal("satisfaction")}
-        onComplete={handleSatisfactionComplete}
-      />
-    </div>
-  )
+      </Routes>
+
+    </Router>
+  );
 }

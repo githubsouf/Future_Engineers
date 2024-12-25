@@ -16,7 +16,7 @@ const engineeringIcons = [
   { Icon: Cog, label: "Systems" },
   { Icon: Laptop, label: "Computing" }
 ]
-
+ 
 export function FloatingIcons() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">

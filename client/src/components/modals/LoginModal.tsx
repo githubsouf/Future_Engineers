@@ -1,6 +1,6 @@
 import Modal from "./Modal"
 import { motion } from "framer-motion"
-
+import { Link } from "react-router-dom"
 interface LoginModalProps {
   isOpen: boolean
   onClose: () => void
@@ -35,9 +35,9 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         </form>
         <p className="mt-4 text-sm text-gray-500 text-center">
           Don't have an account?{" "}
-          <a href="#" className="text-purple-500 hover:underline">
+          <Link to="/auth" className="text-purple-500 hover:underline">
             Sign up
-          </a>
+          </Link>
         </p>
       </motion.div>
     </Modal>
