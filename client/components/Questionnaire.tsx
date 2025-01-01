@@ -1,8 +1,8 @@
-"use client"
+import React from 'react';
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
+import { Card} from "../components/ui/card";
 
 interface Question {
   id: number
@@ -16,11 +16,65 @@ interface QuestionnaireProps {
 }
 
 const defaultQuestions: Question[] = [
-  { id: 1, text: "You enjoy solving complex technical problems." },
-  { id: 2, text: "You are interested in cybersecurity and protecting digital assets." },
-  { id: 3, text: "You like working with cloud technologies and distributed systems." },
-  { id: 4, text: "You are passionate about data analysis and statistical modeling." },
-  { id: 5, text: "You are excited about artificial intelligence and machine learning." },
+  // Agreeableness
+  { id: 1, text: "I find it easy to empathize with other people's feelings." },
+  { id: 2, text: "I often go out of my way to help someone in need." },
+  { id: 3, text: "I am considerate of others' opinions, even if I disagree." },
+  { id: 4, text: "I enjoy collaborating with others to achieve a common goal." },
+  { id: 5, text: "I avoid unnecessary conflicts in social situations." },
+  { id: 6, text: "I value harmony and try to mediate disagreements." },
+  { id: 7, text: "I enjoy making people feel included in group activities." },
+  { id: 8, text: "I believe it's important to support my friends and family emotionally." },
+  { id: 9, text: "I tend to trust others unless they give me a reason not to." },
+  { id: 10, text: "I feel satisfaction when I make others happy." },
+
+  // Conscientiousness
+  { id: 11, text: "I make detailed plans and stick to them." },
+  { id: 12, text: "I usually complete tasks before deadlines." },
+  { id: 13, text: "I pay close attention to details when working on a project." },
+  { id: 14, text: "I prefer organizing my schedule rather than being spontaneous." },
+  { id: 15, text: "I am persistent when working toward my goals." },
+  { id: 16, text: "I often double-check my work for mistakes." },
+  { id: 17, text: "I believe in setting high standards for myself." },
+  { id: 18, text: "I dislike leaving tasks unfinished." },
+  { id: 19, text: "I find it rewarding to follow rules and guidelines." },
+  { id: 20, text: "I can be relied upon to keep my promises." },
+
+  // Extroversion
+  { id: 21, text: "I enjoy meeting new people and making new friends." },
+  { id: 22, text: "I feel energized when spending time with others." },
+  { id: 23, text: "I prefer working in a group rather than alone." },
+  { id: 24, text: "I find it easy to start conversations with strangers." },
+  { id: 25, text: "I enjoy being the center of attention in social situations." },
+  { id: 26, text: "I feel comfortable expressing my thoughts and opinions openly." },
+  { id: 27, text: "I enjoy attending events or gatherings with large groups of people." },
+  { id: 28, text: "I often take the lead when working on group projects." },
+  { id: 29, text: "I feel motivated in lively and dynamic environments." },
+  { id: 30, text: "I look forward to participating in group activities or discussions." },
+
+  // Openness
+  { id: 31, text: "I enjoy trying out new hobbies or activities." },
+  { id: 32, text: "I am drawn to creative and artistic pursuits." },
+  { id: 33, text: "I like exploring new ideas and concepts, even if they challenge my beliefs." },
+  { id: 34, text: "I often imagine different possibilities or alternative solutions." },
+  { id: 35, text: "I am curious about how things work in the world around me." },
+  { id: 36, text: "I enjoy reading or learning about abstract topics like philosophy or science." },
+  { id: 37, text: "I am comfortable adapting to new or unfamiliar situations." },
+  { id: 38, text: "I appreciate unique and unconventional perspectives." },
+  { id: 39, text: "I value innovation and think outside the box." },
+  { id: 40, text: "I like taking risks to explore uncharted territory." },
+
+  // Stress Tolerance
+  { id: 41, text: "I stay calm and composed in stressful situations." },
+  { id: 42, text: "I can handle criticism without taking it personally." },
+  { id: 43, text: "I am able to focus on tasks even under pressure." },
+  { id: 44, text: "I don’t let small setbacks ruin my entire day." },
+  { id: 45, text: "I find it easy to adapt when unexpected challenges arise." },
+  { id: 46, text: "I avoid overreacting when things don’t go as planned." },
+  { id: 47, text: "I tend to look for solutions rather than dwelling on problems." },
+  { id: 48, text: "I can keep my emotions in check during disagreements." },
+  { id: 49, text: "I don’t let frustration affect my performance or behavior." },
+  { id: 50, text: "I believe I can overcome any difficulties with persistence." },
 ]
 
 export default function Questionnaire({ questions = defaultQuestions, onAnswer, onComplete }: QuestionnaireProps) {
