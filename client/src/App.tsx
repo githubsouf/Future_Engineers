@@ -3,6 +3,7 @@ import Home from "./Home";
 import AuthCard from "./components/auth/AuthCard";
 import Forget from "./components/auth/Forget";
 import Reset from "./components/auth/Reset";
+import Roadmap from "./components/Roadmap";
 // import Signup from "./components/auth/Singup";
 // import Login from "./components/auth/Login";
 
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/auth" element={<AuthCard/>}/>
         <Route path='/forget' element={<Forget/>}/>
         <Route path='/reset' element={<Reset/>}/>
+        <Route path='/roadmap' element={<Roadmap/>}/>
 
       </Routes>
 
