@@ -3,10 +3,8 @@ package org.example.futureengineers.Dtos;
 import org.example.futureengineers.Dtos.Response.DirecteurResponseDto;
 import org.example.futureengineers.Dtos.Response.FiliereResponse;
 import org.example.futureengineers.Dtos.Response.QuestionResponse;
-import org.example.futureengineers.Entities.Directeur;
-import org.example.futureengineers.Entities.Filiere;
-import org.example.futureengineers.Entities.Question;
-import org.example.futureengineers.Entities.User;
+import org.example.futureengineers.Dtos.Response.StudentResponceDto;
+import org.example.futureengineers.Entities.*;
 import org.springframework.stereotype.Component;
 
 
@@ -34,6 +32,16 @@ public class Mapper {
                 .nom(user.getNom())
                 .email(user.getEmail())
                 .prenom(user.getPrenom())
+                .build();
+    }
+    //STUDENT
+    public static StudentResponceDto ConvertStudentToStudentResponceDto(Student student){
+        User user = student.getUser();
+        return StudentResponceDto.builder()
+                .id(student.getId())
+                .nom(user.getNom())
+                .prenom(user.getPrenom())
+                .email(user.getEmail())
                 .build();
     }
 }
