@@ -38,9 +38,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/quiz/**").hasAnyAuthority("directeur", "member", "student")
+                        .requestMatchers("/quiz/**").hasAnyAuthority( "member", "student")
                         .requestMatchers("/auth/register", "/auth/login").permitAll()
-                        //.requestMatchers("/api/directeurs/**").hasRole("DIRECTEUR") --> utilisez @PreAuthorize("hasRole('DIRECTEUR')")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
