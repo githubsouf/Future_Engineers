@@ -22,4 +22,7 @@ public class Student {
     @ManyToOne()
     @JoinColumn(name = "directeur_id")
     private Directeur directeur;
+
+    @Column(name = "releve_note",columnDefinition = "TEXT")
+    private String releveDeNote;
 }

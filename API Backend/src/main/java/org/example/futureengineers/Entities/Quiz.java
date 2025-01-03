@@ -29,7 +29,7 @@ public class Quiz {
     private Member member;
 
     @OneToMany(mappedBy = "quiz")
-    private List<QuizResponses> quizResponses ;
+    private List<QuizResponses> quizResponses;
 
     @OneToMany(mappedBy = "quiz")
     private List<Result> results ;

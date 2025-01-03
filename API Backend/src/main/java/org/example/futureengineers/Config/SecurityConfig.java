@@ -26,14 +26,20 @@ public class SecurityConfig {
     }
 
     @Bean
+    /**
+     * c'est une convention du Spring Security le role doit etre sous forme ROLE_<notreRoleEnMajuscule>
+     * + simplification d'etulisation et evitez les counflis : ajouter @PreAuthorize()
+     * a une methode ou class Controller
+     * --> syntaxe: @PreAuthorize("hasRole('<ROLE EN MAJUSCULE>')") ex: @PreAuthorize("hasRole('DIRECTEUR')")
+     * NB: sans le 'ROLE_' : c'est une preuve de convention :)
+     */
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/quiz/**").hasAnyAuthority("directeur", "member", "student")
+                        .requestMatchers("/quiz/**").hasAnyAuthority( "member", "student")
                         .requestMatchers("/auth/register", "/auth/login").permitAll()
-                        .requestMatchers("/directeur/**").hasAuthority("directeur")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

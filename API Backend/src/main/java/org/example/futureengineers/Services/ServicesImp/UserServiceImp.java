@@ -88,7 +88,7 @@ public class UserServiceImp implements UserService {
             user = userRepository.save(user);
             studentRepository.save(student);
         } else {
-            throw new IllegalArgumentException("Le rôle doit être 'Directeur', 'Member', ou 'Student'.");
+            throw new IllegalArgumentException("Le rôle doit être 'directeur', 'member', ou 'student'.");
         }
 
 
