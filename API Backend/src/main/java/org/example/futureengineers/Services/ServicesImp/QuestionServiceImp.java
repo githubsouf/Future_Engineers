@@ -6,8 +6,11 @@ import org.example.futureengineers.Repositories.QuestionRepository;
 import org.example.futureengineers.Services.ServicesInterfaces.QuestionService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.example.futureengineers.Dtos.Mapper.ConvertQuestionToQuestionResponse;
 
 @Service
 public class QuestionServiceImp implements QuestionService {
@@ -22,9 +25,8 @@ public class QuestionServiceImp implements QuestionService {
 
     @Override
     public List<QuestionResponse> ReadAll() {
-        return questionRepository.findAll()
-                .stream()
-                .map(mapper::ConvertQuestionToQuestionResponse)
-                .collect(Collectors.toList());
+        List<QuestionResponse> questionResponses = new ArrayList<>();
+        questionRepository.findAll().forEach(question -> questionResponses.add(ConvertQuestionToQuestionResponse(question)));
+        return questionResponses;
     }
 }

@@ -26,7 +26,7 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
         this.userRepository=userRepository;
     }
-    @CrossOrigin(origins = "http://localhost:5175")
+    @CrossOrigin(origins = "http://localhost:5176")
     @PostMapping("/register")
     public ResponseEntity<?> register(@Validated @RequestBody RegisterRequest request) {
         try {
@@ -38,7 +38,7 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur interne : " + ex.getMessage());
         }
     }
-    @CrossOrigin(origins = "http://localhost:5175")
+    @CrossOrigin(origins = "http://localhost:5176")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
