@@ -22,7 +22,7 @@ public class Result {
 
     @ManyToOne()
     @JoinColumn(name = "field_id")
-    private Field field;
+    private Filiere field;
 
     private int pourcentage;
 }

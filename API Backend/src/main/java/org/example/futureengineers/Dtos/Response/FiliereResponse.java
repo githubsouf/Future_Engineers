@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FieldResponse {
+public class FiliereResponse {
 
     private Long id;
     private String label;
