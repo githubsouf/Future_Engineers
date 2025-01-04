@@ -45,14 +45,12 @@ public class DirecteurController {
         this.studentService = studentService;
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping
     public ResponseEntity<?> getDirecteur() {
         User user = currentUser.getCurrentUser();
         return ResponseEntity.ok().body(directeurService.getDirecteur(user.getId()));
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
     @PutMapping
     public ResponseEntity<?> updateDirecteur(@RequestBody final DirecteurRequestDto directeurRequest){
         Directeur directeur = directeurService.getDirecteurFromCurrentUser();
@@ -60,8 +58,7 @@ public class DirecteurController {
         return ResponseEntity.ok().body(ConvertDirecteurToDirecteurResponseDto(directeur));
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
-    @DeleteMapping()
+    @DeleteMapping
     public ResponseEntity<?> deleteDirecteur(){
         Directeur directeur = directeurService.getDirecteurFromCurrentUser();
         directeurRepository.delete(directeur);
@@ -70,7 +67,6 @@ public class DirecteurController {
 
 
     // ADDING STUDENTS VIA EXCEL FILE
-    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/add-students-from-excel")
     public ResponseEntity<?> extractEmails(@RequestParam("file") MultipartFile file) {
         // le directeur authentifier
@@ -110,7 +106,6 @@ public class DirecteurController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/students")
     public ResponseEntity<?> getStudents(){
         // le directeur authentifier
@@ -127,7 +122,6 @@ public class DirecteurController {
         return ResponseEntity.ok(studentResponceDto);
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping("/students/{id}")
     public ResponseEntity<?> deleteStudentById(@PathVariable final Long id){
         Dictionary<String,String> responce = new Hashtable<>();
@@ -143,7 +137,6 @@ public class DirecteurController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping("/students")
     public ResponseEntity<?> deleteAllStudents(){
         Dictionary<String,String> responce = new Hashtable<>();

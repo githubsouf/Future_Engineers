@@ -12,10 +12,10 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     // Générer un token avec l'email et le rôle
-    public String generateToken(String email, String role) {
+    public static String generateToken(String email, String role) {
         return Jwts.builder()
                 .setSubject(email) // Sujet principal (email)
                 .claim("role", "ROLE_" + role.toUpperCase()) // Ajout du rôle dans les claims

@@ -1,9 +1,6 @@
 package org.example.futureengineers.Dtos;
 
-import org.example.futureengineers.Dtos.Response.DirecteurResponseDto;
-import org.example.futureengineers.Dtos.Response.FiliereResponse;
-import org.example.futureengineers.Dtos.Response.QuestionResponse;
-import org.example.futureengineers.Dtos.Response.StudentResponceDto;
+import org.example.futureengineers.Dtos.Response.*;
 import org.example.futureengineers.Entities.*;
 import org.springframework.stereotype.Component;
 
@@ -43,5 +40,14 @@ public class Mapper {
                 .prenom(user.getPrenom())
                 .email(user.getEmail())
                 .build();
+    }
+    public static MemberResponseDto ConvertMemberToMemberResponseDto(Member member){
+        MemberResponseDto memberResponseDto = new MemberResponseDto();
+        memberResponseDto.setId(member.getId());
+        memberResponseDto.setReleveDeBote(member.getReleveDeBote());
+        memberResponseDto.setNom(member.getUser().getNom());
+        memberResponseDto.setPrenom(member.getUser().getPrenom());
+        memberResponseDto.setEmail(member.getUser().getEmail());
+        return memberResponseDto;
     }
 }
