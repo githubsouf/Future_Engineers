@@ -24,7 +24,7 @@ public class StudentController {
     }
 
 
-    @PostMapping("/add-releve-note")
+    @PutMapping("/add-releve-note")
     public ResponseEntity<?> addReleveNote(@RequestParam("file") MultipartFile file) throws IOException {
         // le student authentifier
         Student student = studentService.getStudentFromCurrentUser();
