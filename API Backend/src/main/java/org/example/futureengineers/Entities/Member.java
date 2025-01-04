@@ -16,6 +16,8 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "releve_note",columnDefinition = "TEXT")
     private String releveDeBote;
 
     @OneToOne(cascade = CascadeType.ALL)
