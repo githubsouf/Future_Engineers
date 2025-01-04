@@ -1,21 +1,17 @@
-import Header from "../layout/Header";
+import Content from "./Components/Content";
 import Sidebar from "./Sidebar/Sidebar";
+import './Dashboard.css'
 
 
 export default function Dashboard(){
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
+        <div className="dashboard">
           <Sidebar/>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div className="dashboard--content">
+              <Content/>
 
-            <Header />
-    
-            <div style={{ flex: 1, padding: '20px' }}>
-              <div style={{ marginTop: '20px' }}>
-                <MedecinCRUD />
-              </div>
+          
             </div>
-          </div>
         </div>
       );
 }

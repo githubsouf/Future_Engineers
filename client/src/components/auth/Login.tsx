@@ -37,7 +37,7 @@ export default function Login({flipCard}: LoginProps) {
     localStorage.setItem("role", role);
     console.log("Role from backend: ", role);
     
-    if (role === "directeur") {
+    if (role === "ROLE_DIRECTEUR") {
         navigate("/directeur");
     }else {
         navigate("/membre");

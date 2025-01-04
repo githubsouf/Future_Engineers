@@ -96,9 +96,9 @@ export default function Signup({flipCard}: SignupProps) {
           </button>
         </form>
         <p className="mt-4 text-sm text-gray-500 text-center">
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <button onClick={flipCard} className="text-blue-500 underline">
-            Sign up
+            Log in
           </button>
         </p>
       </div>
