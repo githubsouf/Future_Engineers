@@ -97,7 +97,7 @@ public class DirecteurController {
             File tempFile = File.createTempFile("uploaded", file.getOriginalFilename());
             file.transferTo(tempFile);
             // Extraire les emails
-            List<String> emails = emailExtractorService.extractEmailsFromExcel(tempFile);
+            List<String> emails = emailExtractorService.extractFirstColumnWithEmails(tempFile.getAbsolutePath());
 
             // Supprimer le fichier temporaire
             tempFile.delete();

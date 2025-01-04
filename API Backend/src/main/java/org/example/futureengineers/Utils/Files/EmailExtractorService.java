@@ -2,6 +2,7 @@ package org.example.futureengineers.Utils.Files;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -14,36 +15,83 @@ import java.util.regex.Pattern;
 @Service
 public class EmailExtractorService {
 
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        public List<String> extractFirstColumnWithEmails(String filePath) throws IOException {
+            // Charger le fichier Excel
+            FileInputStream fis = new FileInputStream(new File(filePath));
+            Workbook workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheetAt(0);
 
-    public List<String> extractEmailsFromExcel(File excelFile) {
-        List<String> emails = new ArrayList<>();
-        Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
-
-        try (FileInputStream fis = new FileInputStream(excelFile)) {
-            // Vérifiez le type du fichier
-            if (!excelFile.getName().endsWith(".xlsx") && !excelFile.getName().endsWith(".xls")) {
-                throw new IllegalArgumentException("Unsupported file type. Please upload a valid Excel file (.xlsx or .xls)");
+            // Vérifier s'il y a au moins une ligne
+            if (sheet.getPhysicalNumberOfRows() == 0) {
+                throw new IllegalArgumentException("Le fichier Excel est vide.");
             }
 
-            Workbook workbook = WorkbookFactory.create(fis);
+            // Lire chaque colonne
+            int totalColumns = sheet.getRow(0).getLastCellNum(); // Nombre total de colonnes
+            for (int colIndex = 0; colIndex < totalColumns; colIndex++) {
+                int consecutiveEmailCount = 0;
+                int startRowIndex = -1; // Pour suivre l'indice de début des 3 emails consécutifs
 
-            for (Sheet sheet : workbook) {
-                for (Row row : sheet) {
-                    for (Cell cell : row) {
-                        if (cell.getCellType() == CellType.STRING) {
-                            String cellValue = cell.getStringCellValue();
-                            if (emailPattern.matcher(cellValue).matches()) {
-                                emails.add(cellValue);
-                            }
+                // Vérifier les 20 premières lignes de cette colonne
+                for (int rowIndex = 0; rowIndex < Math.min(sheet.getPhysicalNumberOfRows(), 20); rowIndex++) {
+                    String cellValue = getStringValue(sheet.getRow(rowIndex).getCell(colIndex));
+
+                    if (isEmail(cellValue)) {
+                        consecutiveEmailCount++;
+                        if (consecutiveEmailCount == 3) {
+                            // On a trouvé 3 emails consécutifs
+                            startRowIndex = rowIndex - 2; // Première ligne des 3 consécutives
+                            break;
                         }
+                    } else {
+                        consecutiveEmailCount = 0; // Réinitialiser le compteur si une cellule n'est pas un email
                     }
                 }
+
+                // Si on a trouvé 3 emails consécutifs, collecter uniquement les cellules avec des emails valides
+                if (startRowIndex != -1) {
+                    List<String> columnData = new ArrayList<>();
+                    for (int rowIndex = startRowIndex; rowIndex < sheet.getPhysicalNumberOfRows(); rowIndex++) {
+                        String cellValue = getStringValue(sheet.getRow(rowIndex).getCell(colIndex));
+                        if (isEmail(cellValue)) {
+                            columnData.add(cellValue); // Ajouter uniquement les emails valides
+                        }
+                    }
+                    // Retourner la première colonne qui vérifie la condition
+                    workbook.close();
+                    fis.close();
+                    return columnData;
+                }
             }
-        } catch (IOException e) {
-            throw new RuntimeException("Error reading Excel file", e);
+
+            workbook.close();
+            fis.close();
+
+            // Si aucune colonne ne vérifie la condition, retourner une liste vide
+            return new ArrayList<>();
         }
 
-        return emails;
+        // Méthode pour convertir une cellule en chaîne de caractères
+        private String getStringValue(Cell cell) {
+            if (cell == null) {
+                return "";
+            }
+            switch (cell.getCellType()) {
+                case STRING:
+                    return cell.getStringCellValue().trim();
+                case NUMERIC:
+                    return String.valueOf(cell.getNumericCellValue()).trim();
+                case BOOLEAN:
+                    return String.valueOf(cell.getBooleanCellValue()).trim();
+                case FORMULA:
+                    return cell.getCellFormula().trim();
+                default:
+                    return "";
+            }
+        }
+
+        // Méthode pour vérifier si une chaîne est au format email
+        private boolean isEmail(String value) {
+            return value != null && value.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+        }
     }
-}
