@@ -1,0 +1,1053 @@
+{
+    "questions": [
+      {
+        "id": "extraversion_1",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "J’aime participer à de grands rassemblements ou fêtes.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_2",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Je me sens plein(e) d’énergie lorsque je suis entouré(e) de gens.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_3",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Je préfère souvent passer du temps seul(e).",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_4",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Je n’hésite pas à prendre la parole et à diriger un groupe.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_5",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Je me sens parfois épuisé(e) après beaucoup d’interactions sociales.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_6",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Je prends la parole facilement dans les discussions de groupe.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_7",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "J’aime faire de nouvelles connaissances et lier de nouvelles amitiés.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_8",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Je préfère un environnement calme plutôt que très animé.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "extraversion_9",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Les autres me décrivent souvent comme une personne très sociable.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "Bextraversion_10",
+        "category": "BigFive",
+        "subdimension": "Extraversion",
+        "question": "Je préfère éviter les événements où je ne connais personne.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+  
+  
+      /* --- Ouverture (10) --- */
+      {
+        "id": "ouverture_1",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "J’aime découvrir de nouvelles idées et approches.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_2",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je suis curieux(se) et j’explore facilement des sujets inconnus.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_3",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je préfère suivre des méthodes déjà établies plutôt que d’innover.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_4",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je m’intéresse à des domaines artistiques ou créatifs (musique, peinture...).",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_5",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je remets en question les façons de faire traditionnelles.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_6",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "J’aime sortir de ma routine pour découvrir de nouvelles expériences.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_7",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je reste méfiant(e) vis-à-vis de ce qui sort de l’ordinaire.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_8",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je me décrirais comme une personne créative.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_9",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je veux comprendre les choses en profondeur plutôt que superficiellement.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "ouverture_10",
+        "category": "BigFive",
+        "subdimension": "Ouverture",
+        "question": "Je me sens souvent limité(e) par la routine et la monotonie.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+  
+  
+      /* --- Conscience (10) --- */
+      {
+        "id": "conscienciosite_1",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Je planifie mes tâches à l’avance et j’essaie de m’y tenir.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_2",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Je remets souvent des tâches au lendemain.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_3",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Je suis très attentif(ve) aux détails dans ce que je fais.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_4",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Je planifie à l’avance pour éviter le maximum d’imprévus.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_5",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "J’ai parfois du mal à rester concentré(e) jusqu’à la fin d’une tâche.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_6",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "On peut compter sur moi pour respecter scrupuleusement mes engagements.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_7",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Je me laisse souvent distraire par mon environnement (réseaux sociaux, bruits...).",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_8",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Je persévère même quand un exercice ou un projet s’avère difficile.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_9",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Je tiens à garder mon espace de travail et mes affaires bien organisés.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "conscienciosite_10",
+        "category": "BigFive",
+        "subdimension": "Conscience",
+        "question": "Maintenir mes efforts à long terme m’est parfois difficile.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+  
+  
+      /* --- Stabilité Émotionnelle (10) --- */
+      {
+        "id": "stabilite_emotionnelle_1",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je gère plutôt bien la pression et le stress.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_2",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je m’inquiète facilement des détails qui pourraient mal tourner.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_3",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je reste serein(e) même face à des délais serrés.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_4",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "J’ai parfois des sautes d’humeur rapides et intenses.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_5",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je parviens à garder mon sang-froid en cas de conflit ou d’urgence.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_6",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je panique facilement quand je me sens débordé(e).",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_7",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je relativise quand un résultat n’est pas conforme à mes attentes.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_8",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je me sens souvent anxieux(se) même si tout va bien.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_9",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "Je reste positif(ve) et motivé(e) malgré les difficultés.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "stabilite_emotionnelle_10",
+        "category": "BigFive",
+        "subdimension": "StabiliteEmotionnelle",
+        "question": "J’ai besoin de temps pour me remettre d’un échec ou d’une critique négative.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+  
+  
+      /* --- Agréabilité (10) --- */
+      {
+        "id": "agreabilite_1",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "Je fais le maximum pour éviter les conflits.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_2",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "Je peux être compétitif(ve) et parfois insister sur mon point de vue.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_3",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "J’aime aider les autres, même si cela me demande un effort supplémentaire.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_4",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "Je suis prêt(e) à faire des compromis pour résoudre un désaccord.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_5",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "Je dis les choses franchement, même si cela peut blesser.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_6",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "Les gens me décrivent comme bienveillant(e) et attentionné(e).",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_7",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "Je préfère coopérer plutôt que rivaliser.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_8",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "La gentillesse peut être perçue comme une faiblesse selon moi.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_9",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "Je respecte les idées et sentiments d’autrui, même si je ne les partage pas.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "agreabilite_10",
+        "category": "BigFive",
+        "subdimension": "Agreabilite",
+        "question": "J’ai du mal à pardonner quand on me fait du tort.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+  
+  
+      /* --- Motivation (12) --- */
+      {
+        "id": "motivation_1",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je ressens une grande satisfaction quand je résous un problème technique complexe.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_2",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "J’ai besoin de voir l’impact concret de mon travail sur la société ou l’environnement.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_3",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "J’aime travailler sur des projets où l’innovation et la créativité sont encouragées.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_4",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je préfère fortement collaborer avec différentes personnes plutôt que travailler seul(e).",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_5",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "J’aime améliorer en continu l’efficacité d’un processus ou d’un système.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_6",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je suis stimulé(e) par l’idée de maîtriser de nouvelles technologies.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_7",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "La stabilité financière et la sécurité de l’emploi sont plus importantes pour moi que l’innovation.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_8",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je suis prêt(e) à relever des défis, même s’ils dépassent ma zone de confort.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_9",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je veux voir rapidement des résultats concrets de mon travail.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_10",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je préfère des responsabilités claires et un cadre de travail bien défini.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_11",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je suis capable de consacrer beaucoup de temps si le projet me passionne vraiment.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "motivation_12",
+        "category": "Motivation",
+        "subdimension": "Motivation",
+        "question": "Je préfère l’excellence technique plutôt que l’aspect relationnel d’un projet.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+  
+  
+      /* --- Intérêts (12) --- */
+      {
+        "id": "interest_1",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "La programmation, la conception logicielle et les algorithmes me passionnent.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_2",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "J’aime analyser et optimiser la production, la logistique ou la gestion de projet.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_3",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "La cybersécurité (protection des données, cryptographie) m’attire fortement.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_4",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "La conception ou la maintenance de réseaux et télécoms me passionne.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_5",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "La protection de l’environnement et le développement durable me tiennent particulièrement à cœur.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_6",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "La conception et la maintenance de systèmes électriques ou électroniques m’intéressent beaucoup.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_7",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "Je me vois bien coordonner des projets et des équipes pluridisciplinaires.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_8",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "Je préfère me concentrer sur des tâches purement techniques plutôt que sur la gestion humaine.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_9",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "Je suis curieux(se) au sujet des menaces informatiques et de la cyberdéfense.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_10",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "J’aimerais trouver des solutions concrètes pour réduire l’empreinte écologique d’une organisation.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_11",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "Développer des applications logicielles (web, mobile, etc.) m’attire beaucoup.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "interest_12",
+        "category": "Interets",
+        "subdimension": "Interets",
+        "question": "La gestion et l’optimisation de systèmes électriques (énergies renouvelables, smart grids...) me semblent passionnantes.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+  
+  
+      /* --- Influence Familiale (5) --- */
+      {
+        "id": "fam_1",
+        "category": "Familial",
+        "subdimension": "InfluenceFamiliale",
+        "question": "Ma famille m’encourage fortement à choisir une filière spécifique.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "fam_2",
+        "category": "Familial",
+        "subdimension": "InfluenceFamiliale",
+        "question": "Les attentes de mes parents influencent grandement mes décisions d’orientation.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "fam_3",
+        "category": "Familial",
+        "subdimension": "InfluenceFamiliale",
+        "question": "Je me sens libre de suivre ma passion, peu importe l’avis de ma famille.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "fam_4",
+        "category": "Familial",
+        "subdimension": "InfluenceFamiliale",
+        "question": "Je bénéficie d’un soutien moral et/ou financier important de ma famille pour mes études.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      },
+      {
+        "id": "fam_5",
+        "category": "Familial",
+        "subdimension": "InfluenceFamiliale",
+        "question": "La réussite selon les critères familiaux est plus importante que mes propres aspirations.",
+        "possible_answers": [
+          "1 - Pas du tout d'accord",
+          "2 - Plutôt pas d'accord",
+          "3 - Ni d'accord ni pas d'accord",
+          "4 - Plutôt d'accord",
+          "5 - Tout à fait d'accord"
+        ]
+      }
+    ]
+  }
+  
