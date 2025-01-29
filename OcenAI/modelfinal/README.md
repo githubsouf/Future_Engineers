@@ -22,14 +22,14 @@ In a real production environment, you might replace the synthetic dataset with r
 
 ## 2. File Descriptions
 
-### `generate_data.py`
+### `datageneration.py`
 - **Purpose**: Creates a synthetic dataset (~100k rows) that mimics student responses.  
 - **Key Points**:  
   - Each row has **79 feature columns** (Big Five, Motivation, Interests, Family Influence) plus a “filiere” label.  
   - You can modify the `n_per_filiere` parameter or the random noise levels to adjust dataset size and distribution.  
   - Outputs a CSV file called **`dataset_synth_bigfive_extended.csv`**.
 
-### `train_model.py`
+### `model.py`
 - **Purpose**: Trains a **Random Forest** classifier on the CSV from `datageneration.py`.  
 - **Key Points**:  
   - Splits data into train/test sets (80/20).  
@@ -45,7 +45,7 @@ In a real production environment, you might replace the synthetic dataset with r
   - Computes **permutation importances** to measure how each feature affects predictions.  
   - Optionally plots a bar chart of the top features (requires `matplotlib`).
 
-### `app.py` (FastAPI Application)
+### `api.py` (FastAPI Application)
 - **Purpose**: Runs a **FastAPI** service that loads `model.pkl` and `label_encoder.pkl` and exposes a **`POST /predict`** endpoint.  
 - **Key Points**:  
   - Expects a JSON body with **79 numeric fields**:  
