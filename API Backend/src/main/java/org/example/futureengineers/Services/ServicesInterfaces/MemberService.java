@@ -15,4 +15,5 @@ public interface MemberService {
     MemberResponseDto ReadMember(Long id);
     Member ReadMemberEntity(Long id);
     String AddReleveDeNote(Long id , String filePath) throws IOException;
+    Member getMemberFromCurrentUser();
 }
