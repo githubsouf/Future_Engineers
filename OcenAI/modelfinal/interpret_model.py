@@ -81,8 +81,8 @@ def interpret_random_forest(csv_path, model_path="model.pkl", encoder_path="labe
 
 if __name__ == "__main__":
     # Change if you have different file names
-    CSV_PATH = "modelfinal/dataset_synth_bigfive_extended.csv"
-    MODEL_PATH = "modelfinal/model.pkl"
-    ENCODER_PATH = "modelfinal/label_encoder.pkl"
+    CSV_PATH = "dataset_synth_bigfive_extended.csv"
+    MODEL_PATH = "model.pkl"
+    ENCODER_PATH = "label_encoder.pkl"
 
     interpret_random_forest(CSV_PATH, MODEL_PATH, ENCODER_PATH)

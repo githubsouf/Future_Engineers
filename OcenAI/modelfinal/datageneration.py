@@ -184,5 +184,5 @@ if __name__ == "__main__":
     print(f"\nTaille du dataset : {df_synth.shape} (attendu ~10,002 lignes)")
     
     # Sauvegarder en CSV
-    df_synth.to_csv("modelfinal/dataset_synth_bigfive_extended.csv", index=False)
+    df_synth.to_csv("dataset_synth_bigfive_extended.csv", index=False)
     print("Dataset sauvegardé sous 'dataset_synth_bigfive_extended.csv'.")
