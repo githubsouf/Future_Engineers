@@ -4,9 +4,11 @@ package org.example.futureengineers.Services.ServicesImp;
 import org.example.futureengineers.Dtos.Request.MemberRequestDto;
 import org.example.futureengineers.Dtos.Response.MemberResponseDto;
 import org.example.futureengineers.Entities.Member;
+import org.example.futureengineers.Entities.User;
 import org.example.futureengineers.Repositories.MemberRepository;
 import org.example.futureengineers.Repositories.UserRepository;
 import org.example.futureengineers.Services.ServicesInterfaces.MemberService;
+import org.example.futureengineers.Utils.CurrentUserUtil;
 import org.example.futureengineers.Utils.Files.Base64ImageConverter;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +23,15 @@ public class MemberServiceImp implements MemberService {
 
     private final MemberRepository memberRepository;
     private final UserRepository userRepository;
+    private final CurrentUserUtil currentUserUtil;
     private final Base64ImageConverter base64ImageConverter;
 
 
     public MemberServiceImp (MemberRepository memberRepository,
-                             UserRepository userRepository, Base64ImageConverter base64ImageConverter){
+                             UserRepository userRepository, CurrentUserUtil currentUserUtil, Base64ImageConverter base64ImageConverter){
         this.memberRepository=memberRepository;
         this.userRepository=userRepository;
+        this.currentUserUtil = currentUserUtil;
         this.base64ImageConverter = base64ImageConverter;
     }
 
@@ -82,5 +86,11 @@ public class MemberServiceImp implements MemberService {
         member.setReleveDeBote(releveDeNoteBase64);
         memberRepository.save(member);
         return releveDeNoteBase64;
+    }
+
+    @Override
+    public Member getMemberFromCurrentUser() {
+        User user = currentUserUtil.getCurrentUser();
+        return memberRepository.findMemberByUser(user);
     }
 }
