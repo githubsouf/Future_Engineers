@@ -2,8 +2,12 @@ package org.example.futureengineers.Services.ServicesImp;
 
 import org.example.futureengineers.Dtos.Mapper;
 import org.example.futureengineers.Dtos.Response.QuestionResponse;
+import org.example.futureengineers.Entities.Question;
 import org.example.futureengineers.Repositories.QuestionRepository;
 import org.example.futureengineers.Services.ServicesInterfaces.QuestionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,9 +28,12 @@ public class QuestionServiceImp implements QuestionService {
     }
 
     @Override
-    public List<QuestionResponse> ReadAll() {
-        List<QuestionResponse> questionResponses = new ArrayList<>();
-        questionRepository.findAll().forEach(question -> questionResponses.add(ConvertQuestionToQuestionResponse(question)));
-        return questionResponses;
+    public Page<QuestionResponse> ReadAll(int page) {
+        int size = 10; // 🔥 Fixe la pagination à 10 éléments par page
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Question> questionsPage = questionRepository.findAll(pageable);
+
+        // Convertir `Page<Question>` en `Page<QuestionResponse>`
+        return questionsPage.map(Mapper::ConvertQuestionToQuestionResponse);
     }
 }
