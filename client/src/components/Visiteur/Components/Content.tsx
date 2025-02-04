@@ -5,7 +5,7 @@ export default function Content(){
     return (
     <div className="content">
     <div className="content--header">
-    <h1 className="header--title">Directeur</h1>
+    <h1 className="header--title">Visiteur</h1>
     <div className="header--activity">
         <div className="search-box">
             <input type="text" placeholder="Search anything here..."/>

@@ -40,7 +40,7 @@ export default function Login({flipCard}: LoginProps) {
     if (role === "ROLE_DIRECTEUR") {
         navigate("/directeur");
     }else {
-        navigate("/membre");
+        navigate("/visiteur");
     }
     }catch(error){
       console.log("3ayan",error)

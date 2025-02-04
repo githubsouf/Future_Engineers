@@ -122,34 +122,35 @@ export default function Questionnaire({ questions = defaultQuestions, onAnswer, 
             </div>
 
             <div className="flex justify-between w-full gap-2">
-              {[3, 2, 1, 0, -1, -2, -3].map((value) => (
+              {[1, 2, 3, 4, 5].map((value) => (
                 <button
                   key={value}
                   onClick={() => handleSelect(value)}
                   className={`w-12 h-12 rounded-full border-2 transition-all duration-200
                     ${
                       answers[questions[currentQuestion].id] === value
-                        ? value > 0
-                          ? "border-emerald-500 bg-emerald-100"
-                          : value < 0
-                          ? "border-purple-500 bg-purple-100"
-                          : "border-gray-400 bg-gray-100"
-                        : value > 0
-                        ? "border-emerald-200 hover:border-emerald-400"
-                        : value < 0
-                        ? "border-purple-200 hover:border-purple-400"
-                        : "border-gray-200 hover:border-gray-300"
+                        ? value === 3
+                          ? "border-gray-400 bg-gray-100" // Neutral
+                          : value > 3
+                          ? "border-emerald-500 bg-emerald-100" // Agree
+                          : "border-purple-500 bg-purple-100" // Disagree
+                        : value === 3
+                        ? "border-gray-200 hover:border-gray-300" // Neutral hover
+                        : value > 3
+                        ? "border-emerald-200 hover:border-emerald-400" // Agree hover
+                        : "border-purple-200 hover:border-purple-400" // Disagree hover
                     }`}
                   aria-label={`${
-                    value > 0
-                      ? `Agree level ${value}`
-                      : value < 0
-                      ? `Disagree level ${Math.abs(value)}`
-                      : "Neutral"
+                    value === 3
+                      ? "Neutral"
+                      : value > 3
+                      ? `Agree level ${value - 3}`
+                      : `Disagree level ${3 - value}`
                   }`}
                 />
               ))}
             </div>
+
 
             <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
               <div

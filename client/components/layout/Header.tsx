@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom"
-import { useModals } from "@/hooks/useModals"
+// import { useModals } from "@/hooks/useModals"
 
 export default function Header() {
   const { openModal } = useModals()
@@ -10,12 +10,15 @@ export default function Header() {
           <Link to="/" className="text-2xl font-bold text-gray-800">
             Future Engineers
           </Link>
-          <Button variant="outline" onClick={() => openModal("login")}>
+          <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ..." onClick={() => openModal("login")}>
             Login
-          </Button>
-          <Button variant="outline" onClick={() => openModal("login")}>
+          </button>
+          <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ..." onClick={() => openModal("login")}>
             Sign up
-          </Button>
+          </button>
+          <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">
+  Save Changes
+</button>
         </nav>
       </header>
   )
