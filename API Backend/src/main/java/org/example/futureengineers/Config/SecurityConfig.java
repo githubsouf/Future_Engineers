@@ -38,7 +38,6 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/quiz/**").hasAnyAuthority( "member", "student")
                         .requestMatchers("/auth/register", "/auth/login").permitAll()
                         .anyRequest().authenticated()
                 )
