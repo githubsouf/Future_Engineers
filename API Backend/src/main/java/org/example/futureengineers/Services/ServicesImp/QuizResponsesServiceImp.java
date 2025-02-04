@@ -29,33 +29,50 @@ public class QuizResponsesServiceImp implements QuizResponsesService {
 
     @Override
     public QuizResponsesDtoToMethode CreateAllQuizResposnses(QuizResponsesClient quizResponsesClient) {
+        // 🟢 Vérification si quizService.CreateQuiz() fonctionne bien
         Quiz quiz = quizService.CreateQuiz();
         if (quiz == null) {
+            System.out.println("❌ ERREUR: Le Quiz n'a pas été créé.");
             return null;
         }
+
+        // 🟢 Vérification si quizResponsesClient contient bien des données
         if (quizResponsesClient == null || quizResponsesClient.getData() == null) {
+            System.out.println("❌ ERREUR: Les données du QuizResponsesClient sont nulles.");
             return null;
         }
+
+        System.out.println("✅ Quiz créé avec ID: " + quiz.getId());
+        System.out.println("📩 Données reçues: " + quizResponsesClient.getData());
 
         for (Map.Entry<String, Integer> entry : quizResponsesClient.getData().entrySet()) {
             String questionId = entry.getKey();
             int value = entry.getValue();
 
+            // 🟢 Vérification si la question existe en base
             Question question = questionRepository.findById(questionId).orElse(null);
             if (question == null) {
-                continue;
+                System.out.println("⚠ Avertissement: La question avec ID '" + questionId + "' n'existe pas en base.");
+                continue; // Passer cette question si elle n'existe pas
             }
+
+            // 🟢 Création de la réponse associée
             QuizResponses quizResponse = new QuizResponses();
             quizResponse.setQuiz(quiz);
             quizResponse.setQuestion(question);
             quizResponse.setValue(value);
 
+            // 🟢 Sauvegarde de la réponse
             quizResponsesRepository.save(quizResponse);
+            System.out.println("✅ Réponse sauvegardée: Question ID = " + questionId + ", Valeur = " + value);
         }
-        QuizResponsesDtoToMethode quizResponsesDtoToMethode=new QuizResponsesDtoToMethode();
+
+        // 🟢 Création de l'objet DTO
+        QuizResponsesDtoToMethode quizResponsesDtoToMethode = new QuizResponsesDtoToMethode();
         quizResponsesDtoToMethode.setId(quiz.getId());
         quizResponsesDtoToMethode.setData(quizResponsesClient.getData());
 
+        System.out.println("✅ Retour de DTO avec Quiz ID: " + quizResponsesDtoToMethode.getId());
         return quizResponsesDtoToMethode;
     }
 }

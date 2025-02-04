@@ -32,16 +32,23 @@ public class ModelApiController {
     }
 
     @PostMapping("/quiz/submet")
-    public ResponseEntity<?> testApi(@RequestBody QuizResponsesClient request) {
+    public ResponseEntity<?> submetQuiz(@RequestBody QuizResponsesClient request) {
         Map<String,String> response = new HashMap<>();
+
+        System.out.println(request);
 
         try {
             QuizResponsesDtoToMethode responsesToMethode = quizResponsesService.CreateAllQuizResposnses(request);
+            if (responsesToMethode == null) {
+                response.put("Erreur", " 'CreateAllQuizResposnses' Failed !");
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            }
 
             Long quizeId = responsesToMethode.getId();
             ModelApiRequestDto apiResponce = modelApiService.SendRequestAndFetchResult(responsesToMethode.getData());
 
             // calling a methode to store quize result to database
+            System.out.println("💕 : responce api" + apiResponce.getResponce());
             if ( ! resultService.storeQuizeResult(quizeId, apiResponce.getResponce())) {
                 response.put("Erreur", "Failed to store Quize Result !");
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);

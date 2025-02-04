@@ -1,8 +1,6 @@
 package org.example.futureengineers.Services.ServicesImp;
 
-import org.example.futureengineers.Entities.Member;
-import org.example.futureengineers.Entities.Quiz;
-import org.example.futureengineers.Entities.Student;
+import org.example.futureengineers.Entities.*;
 import org.example.futureengineers.Repositories.QuizRepository;
 import org.example.futureengineers.Services.ServicesInterfaces.MemberService;
 import org.example.futureengineers.Services.ServicesInterfaces.QuizService;
@@ -30,18 +28,45 @@ public class QuizServiceImp implements QuizService {
 
     @Override
     public Quiz CreateQuiz() {
-        Quiz quiz=new Quiz();
-        if (currentUserUtil.getCurrentUser().getRole().equals("student")){
-            Student student=studentService.getStudentFromCurrentUser();
-            quiz.setStudent(student);
-        } else if (currentUserUtil.getCurrentUser().getRole().equals("member")){
-            Member member=memberService.getMemberFromCurrentUser();
-            quiz.setMember(member);
-        }else {
+        Quiz quiz = new Quiz();
+
+        // 🟢 Vérification si currentUserUtil.getCurrentUser() fonctionne
+        User currentUser = currentUserUtil.getCurrentUser();
+        if (currentUser == null) {
+            System.out.println("❌ ERREUR: Aucun utilisateur connecté.");
             return null;
         }
+
+        System.out.println("👤 Utilisateur connecté: " + currentUser.getUsername() + " - Rôle: " + currentUser.getRole());
+
+        // 🟢 Vérification du rôle de l'utilisateur
+        if (currentUser.getRole() == Role.student) {
+            Student student = studentService.getStudentFromCurrentUser();
+            if (student != null) {
+                quiz.setStudent(student);
+                System.out.println("✅ Étudiant associé au quiz.");
+            }
+        }
+        else if (currentUser.getRole() == Role.member) {
+            Member member = memberService.getMemberFromCurrentUser();
+            if (member != null) {
+                quiz.setMember(member);
+                System.out.println("✅ Membre associé au quiz.");
+            }
+
+        }
+        else {
+            System.out.println("❌ ERREUR: Rôle inconnu -> " + currentUser.getRole());
+            return null;
+        }
+
+        // 🟢 Définition de la date de création
         quiz.setDateCreation(new Date());
+
+        // 🟢 Sauvegarde du quiz en base
         quizRepository.save(quiz);
+        System.out.println("✅ Quiz créé avec ID: " + quiz.getId());
+
         return quiz;
     }
 
