@@ -8,5 +8,5 @@ import java.util.Map;
 @Service
 public interface ModelApiService {
 
-    ModelApiRequestDto SendRequestAndFetchResult(Map<String, Float> requestDto);
+    ModelApiRequestDto SendRequestAndFetchResult(Map<String, Integer> requestDto);
 }
