@@ -1,5 +1,11 @@
 package org.example.futureengineers.Config;
-
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureException;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,10 +16,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -38,30 +40,59 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String email = null;
         String role = null;
 
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+        try {
+            if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+                sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "Token manquant ou format invalide !");
+                return;
+            }
+
             jwt = authorizationHeader.substring(7);
             email = jwtUtil.extractEmail(jwt);
             role = jwtUtil.extractRole(jwt);
-        }
 
-        if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+            if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-            if (jwtUtil.validateToken(jwt, userDetails.getUsername())) {
-                // Create authorities based on role
-                List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(role));
+                if (jwtUtil.validateToken(jwt, userDetails.getUsername())) {
+                    // Créer les autorités basées sur le rôle
+                    List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(role));
 
-                // Set authentication with the authorities
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, authorities);
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                    // Créer l'authentification avec les autorités
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                            userDetails, null, authorities);
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                System.out.println("User authenticated: " + email + ", Role: " + role);
+                    // Définir l'utilisateur authentifié dans le contexte de sécurité
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+
+                    System.out.println("Utilisateur authentifié: " + email + ", Rôle: " + role);
+                } else {
+                    sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "Token invalide !");
+                    return;
+                }
             }
+
+        } catch (ExpiredJwtException e) {
+            sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "Token expiré !");
+            return;
+        } catch (SignatureException | MalformedJwtException e) {
+            sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "Signature du token invalide !");
+            return;
+        } catch (Exception e) {
+            sendErrorResponse(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erreur interne lors de la validation du token !");
+            return;
         }
 
         chain.doFilter(request, response);
     }
-}
 
+    /**
+     * Envoie une réponse JSON avec un message d'erreur et un code HTTP approprié.
+     */
+    private void sendErrorResponse(HttpServletResponse response, int status, String message) throws IOException {
+        response.setStatus(status);
+        response.setContentType("application/json");
+        response.getWriter().write("{\"error\": \"" + message + "\"}");
+        response.getWriter().flush();
+    }
+}

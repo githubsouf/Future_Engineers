@@ -48,7 +48,7 @@ public class ModelApiController {
             ModelApiRequestDto apiResponce = modelApiService.SendRequestAndFetchResult(responsesToMethode.getData());
 
             // calling a methode to store quize result to database
-            System.out.println("💕 : responce api" + apiResponce.getResponce());
+            System.out.println("💕 : responce api " + apiResponce.getResponce());
             if ( ! resultService.storeQuizeResult(quizeId, apiResponce.getResponce())) {
                 response.put("Erreur", "Failed to store Quize Result !");
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
