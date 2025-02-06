@@ -4,72 +4,81 @@ import Roadmap from "@/components/Roadmap";
 import UploadSection from "@/components/UploadSection";
 import { useModals } from "@/hooks/useModals";
 import axios from "axios";
+
 export default function QuizComp() {
   const [step, setStep] = useState<"upload" | "questionnaire" | "loading-roadmap" | "roadmap">("upload");
-  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [answers, setAnswers] = useState<Record<string, number>>({});
   const [recommendedField, setRecommendedField] = useState<string | null>(null);
   const { isOpen, openModal, closeModal } = useModals();
 
-  const handleUploadComplete = () => {
-    setStep("questionnaire");
-    openModal("login");
-  };
+  // **Définition de l'ordre attendu des réponses**
+  const expectedOrder = [
+    "extraversion", "ouverture", "conscienciosite",
+    "stabilite_emotionnelle", "agreabilite",
+    "motivation", "interest", "fam"
+  ];
 
+  // **Cette fonction va être appelée quand le questionnaire est terminé**
   const handleQuestionnaireComplete = async () => {
     setStep("loading-roadmap");
     openModal("satisfaction");
-  
+
     try {
-      const token = localStorage.getItem("token"); // Retrieve the token from local storage
+      const token = localStorage.getItem("token");
       if (!token) {
         console.error("Token manquant !");
         setRecommendedField("Token manquant");
         return;
       }
-  
-      // Send request to the backend with the token
+
+      // **Ordonner les réponses selon l'ordre attendu**
+      const orderedAnswers: Record<string, number> = {};
+      expectedOrder.forEach((trait) => {
+        for (let i = 1; i <= 12; i++) {
+          const key = `${trait}_${i}`;
+          if (answers.hasOwnProperty(key)) {
+            orderedAnswers[key] = answers[key];
+          }
+        }
+      });
+
+      // **Envoyer les données ordonnées**
       const response = await axios.post(
-        "http://localhost:8080/quiz/submit", 
+        "http://localhost:8080/quiz/submit",
+        { data: orderedAnswers },
         {
-          responses: answers, // Send the correct request body
-        }, 
-        {
-          headers: { 
+          headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}` // Include the token in the request headers
+            Authorization: `Bearer ${token}`
           }
         }
       );
-  
-      // Check if the response contains the 'filiere' field
+
+      // **Gérer la réponse du serveur**
       if (response.data && response.data.filiere) {
         setRecommendedField(response.data.filiere);
       } else {
         setRecommendedField("Aucune filière trouvée");
       }
     } catch (error) {
-      // Handle error (token might be invalid or expired)
       console.error("Erreur lors de l'envoi des réponses:", error);
       setRecommendedField("Erreur de connexion");
     }
-  
-    // After 4 seconds, move to the 'roadmap' step
+
+    // **Rediriger vers la roadmap après 4 secondes**
     setTimeout(() => {
       setStep("roadmap");
     }, 4000);
   };
-  
-  
-  
-  
 
+  // **Met à jour les réponses et garantit un stockage structuré**
   const handleAnswer = (questionId: number, value: number) => {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
   };
 
   return (
     <div>
-      {step === "upload" && <UploadSection onComplete={handleUploadComplete} />}
+      {step === "upload" && <UploadSection onComplete={() => { setStep("questionnaire"); openModal("login"); }} />}
       {step === "questionnaire" && <Questionnaire onAnswer={handleAnswer} onComplete={handleQuestionnaireComplete} />}
       {step === "loading-roadmap" && (
         <div className="text-center">
