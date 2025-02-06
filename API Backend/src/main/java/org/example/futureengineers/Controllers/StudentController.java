@@ -44,5 +44,4 @@ public class StudentController {
             return new ResponseEntity<>("Erreur lors de l'ajout de releve de note !", HttpStatus.NOT_IMPLEMENTED);
     }
 
-
 }
