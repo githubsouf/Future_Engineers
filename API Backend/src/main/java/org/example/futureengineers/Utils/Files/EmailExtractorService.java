@@ -94,4 +94,22 @@ public class EmailExtractorService {
         private boolean isEmail(String value) {
             return value != null && value.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
         }
-    }
+
+
+
+
+        public List<String> extractEmailsFromExcel(File file) throws Exception {
+            List<String> emails = new ArrayList<>();
+            try (Workbook workbook = WorkbookFactory.create(file)) {
+                Sheet sheet = workbook.getSheetAt(0);
+                for (Row row : sheet) {
+                    String email = row.getCell(0).getStringCellValue();
+                    if (email != null && email.contains("@")) { 
+                        emails.add(email);
+                    }
+                }
+            }
+            return emails;
+        }
+
+}

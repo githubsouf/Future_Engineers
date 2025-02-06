@@ -16,14 +16,14 @@ export default function UploadSection({ onComplete }: UploadSectionProps) {
   }
 
   return (
-    <div id="upload-section" className="scroll-mt-16">
+    <div id="upload-section" className="mt-36">
       <motion.div 
         className="p-8 backdrop-blur-lg bg-white/90 max-w-2xl mx-auto rounded-lg shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between ">
           <h2 className="text-2xl font-semibold text-gray-800">Upload Your Documents</h2>
           <span className="text-sm text-gray-500">(Optional)</span>
         </div>

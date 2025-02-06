@@ -1,17 +1,9 @@
 
-// import background from  '@/images/background.jpg'
 
-import Header from "./layout/Header";
-
-export default function Roadmap(){
-    return(
+export default function Roadmap({ recommendedField }: { recommendedField: string | null }) {
+  return(
    <div>
-    <Header/>
-    <div className="relative py-36 flex flex-col items-center"
-        style={{
-          backgroundImage: 'url("https://t4.ftcdn.net/jpg/10/16/79/83/360_F_1016798325_tqBjT4jbp5xMHApKzGRrfuBcJJFIXvP2.jpg")',
-         
-        }}>
+    <div className="relative mt-20 flex flex-col items-center">
           
       <div className="flex flex-col items-center">
         <div className="bg-white px-6 py-3 rounded-lg shadow-md text-center"
@@ -69,24 +61,23 @@ export default function Roadmap(){
         </svg>
 
         <div className="flex justify-between w-full mt-6">
-          <div className=" px-6 py-3 rounded-lg shadow-md text-center"
-            style={{ position: 'relative', top: '-430px', right: '-450px', backgroundColor:'#fde68a' }}>
-            <p className="font-semibold">First Label</p>
+        <div className="px-6 py-3 rounded-lg shadow-md text-center" style={{ position: 'relative', top: '-430px', right: '-450px', backgroundColor: '#fde68a' }}>
+            <p className="font-semibold">{recommendedField || "Chargement..."}</p>
           </div>
           <div className="bg-white px-6 py-3 rounded-lg shadow-md text-center"
-          style={{ position: 'relative', top: '-320px', right: '35px' }}>
+          style={{ position: 'relative', top: '-320px', right: '35px' ,filter: 'blur(4px)'}}>
             <p className="font-semibold">Second Label</p>
           </div>
           <div className="bg-white px-6 py-3 rounded-lg shadow-md text-center"
-          style={{ position: 'relative', top: '-220px', right: '-110px' }}>
+          style={{ position: 'relative', top: '-220px', right: '-110px' ,filter: 'blur(4px)' }}>
             <p className="font-semibold">Third Label</p>
           </div>
           <div className="bg-white px-6 py-3 rounded-lg shadow-md text-center"
-          style={{ position: 'relative', top: '-110px', right: '220px' }}>
+          style={{ position: 'relative', top: '-110px', right: '220px' , filter: 'blur(4px)'}}>
             <p className="font-semibold">Fourth Label</p>
           </div>
           <div className="bg-white px-6 py-3 rounded-lg shadow-md text-center"
-          style={{ position: 'relative', top: '-30px', right: '240px' }}>
+          style={{ position: 'relative', top: '-30px', right: '240px', filter: 'blur(4px)' }}>
             <p className="font-semibold">Fifth Label</p>
           </div>
         </div>

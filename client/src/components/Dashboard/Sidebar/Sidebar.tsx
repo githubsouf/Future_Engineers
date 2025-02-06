@@ -1,6 +1,9 @@
-import {BiBookAlt, BiHome, BiStats, BiTask} from 'react-icons/bi'
+import {BiBookAlt} from 'react-icons/bi'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
+import { CircleUser } from 'lucide-react'
+import { FaAddressBook } from "react-icons/fa";
+
 export default function Sidebar(){
     return(
     <div className="menu">
@@ -11,21 +14,15 @@ export default function Sidebar(){
 
         <div className="menu--list">
             <Link className="item" to="/directeur/profile">
-            <BiHome className='icon'/>
+            <CircleUser className='icon'/>
             Profile
             </Link>
         </div>
         <div className="menu--list">
             <Link className="item" to="/directeur/student">
-            <BiTask className='icon'/>
+            <FaAddressBook className='icon'/>
                     Student
             </Link>
-        </div>
-        <div className="menu--list">
-            <a href='#' className='item'>
-                <BiStats className='icon'/>
-                Export Student
-            </a>
         </div>
     </div>
 
