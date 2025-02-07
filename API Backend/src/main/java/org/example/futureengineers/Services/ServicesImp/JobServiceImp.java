@@ -1,12 +1,15 @@
 package org.example.futureengineers.Services.ServicesImp;
 
 
+import org.example.futureengineers.Dtos.Mapper;
+import org.example.futureengineers.Dtos.Response.JobResponseAPiDto;
 import org.example.futureengineers.Entities.Job;
 import org.example.futureengineers.Repositories.FiliereRepository;
 import org.example.futureengineers.Repositories.JobRepository;
 import org.example.futureengineers.Services.ServicesInterfaces.JobService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,10 +17,13 @@ public class JobServiceImp implements JobService {
 
     private final JobRepository jobRepository;
     private final FiliereRepository filiereRepository;
+    private final Mapper mapper;
 
-    public JobServiceImp(JobRepository jobRepository, FiliereRepository filiereRepository) {
+
+    public JobServiceImp(JobRepository jobRepository, FiliereRepository filiereRepository, Mapper mapper) {
         this.jobRepository = jobRepository;
         this.filiereRepository = filiereRepository;
+        this.mapper = mapper;
     }
 
     @Override
@@ -49,10 +55,12 @@ public class JobServiceImp implements JobService {
 
 
     @Override
-    public List<Job> ReadByFiliere(Long filiere_id) {
+    public List<JobResponseAPiDto> ReadByFiliere(Long filiere_id) {
         try {
             if (filiereRepository.existsById(filiere_id)) {
-                return jobRepository.findByFiliereId(filiere_id);
+                List<JobResponseAPiDto> jobResponseAPiDtos=new ArrayList<>();
+                jobRepository.findByFiliereId(filiere_id).forEach(job -> jobResponseAPiDtos.add(Mapper.ConvertJobToJobResponseDto(job)));
+                return jobResponseAPiDtos;
             } else {
                 System.err.println("Filière non trouvée avec l'ID : " + filiere_id);
                 return List.of();
