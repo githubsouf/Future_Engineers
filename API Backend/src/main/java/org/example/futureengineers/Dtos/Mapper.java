@@ -50,4 +50,9 @@ public class Mapper {
         memberResponseDto.setEmail(member.getUser().getEmail());
         return memberResponseDto;
     }
+
+    public static JobResponseAPiDto ConvertJobToJobResponseDto(Job job){
+        JobResponseAPiDto jobResponseAPiDto=new JobResponseAPiDto(job.getTitle(), job.getCompany(), job.getLink(), job.getLocation(), job.getDescription() );
+        return jobResponseAPiDto;
+    }
 }

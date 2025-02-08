@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+
 interface Question {
   id: number;
-  text: string;
+  label: string;
 }
 
 interface QuestionnaireProps {
@@ -15,7 +16,8 @@ export default function Questionnaire({ onAnswer, onComplete }: QuestionnairePro
   const QUESTIONS_PER_PAGE = 10;
   const [currentPage, setCurrentPage] = useState(0);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,17 +27,22 @@ export default function Questionnaire({ onAnswer, onComplete }: QuestionnairePro
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          params: {
+            page: currentPage,
+            size: QUESTIONS_PER_PAGE,
+          },
         });
-        console.log(res.data.content); 
-        setQuestions(res.data.content); 
+
+        // Trier les questions pour s'assurer qu'elles respectent l'ordre souhaité
+        const sortedQuestions = res.data.content.sort((a: Question, b: Question) => a.id - b.id);
+        setQuestions(sortedQuestions);
+        setTotalPages(res.data.totalPages);
       } catch (error) {
-        console.error("Erreur a3ami:", error);
+        console.error("Erreur lors de la récupération des questions:", error);
       }
     };
     fetchData();
-  }, []);
-
-  const totalPages = Math.ceil(questions.length / QUESTIONS_PER_PAGE);
+  }, [currentPage]);
 
   const handleSelect = (questionId: number, value: number) => {
     setAnswers((prev) => ({
@@ -49,7 +56,7 @@ export default function Questionnaire({ onAnswer, onComplete }: QuestionnairePro
     if (currentPage < totalPages - 1) {
       setCurrentPage((prev) => prev + 1);
     } else {
-      onComplete();
+      handleSubmit();
     }
   };
 
@@ -59,10 +66,45 @@ export default function Questionnaire({ onAnswer, onComplete }: QuestionnairePro
     }
   };
 
-  const currentQuestions = questions.slice(
-    currentPage * QUESTIONS_PER_PAGE,
-    (currentPage + 1) * QUESTIONS_PER_PAGE
-  );
+  // Fonction pour trier les réponses et les envoyer au backend
+  const handleSubmit = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      // Trier les réponses pour respecter l'ordre exact attendu
+      const orderedAnswers: Record<string, number> = {};
+      const expectedOrder = [
+        "extraversion", "ouverture", "conscienciosite",
+        "stabilite_emotionnelle", "agreabilite",
+        "motivation", "interest", "fam"
+      ];
+
+      expectedOrder.forEach((trait) => {
+        for (let i = 1; i <= 12; i++) {
+          const key = `${trait}_${i}`;
+          if (answers[key] !== undefined) {
+            orderedAnswers[key] = answers[key];
+          }
+        }
+      });
+
+      const response = await axios.post(
+        "http://127.0.0.1:8080/quiz/submit",
+        { data: orderedAnswers },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log("Réponses envoyées avec succès:", response.data);
+      onComplete();
+    } catch (error) {
+      console.error("Erreur lors de l'envoi des réponses:", error);
+    }
+  };
 
   return (
     <div className="w-full p-8 min-h-screen">
@@ -73,7 +115,7 @@ export default function Questionnaire({ onAnswer, onComplete }: QuestionnairePro
         exit={{ opacity: 0 }}
         className="space-y-12"
       >
-        {currentQuestions.map((question) => (
+        {questions.map((question) => (
           <div key={question.id} className="mb-6">
             <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
               {question.label}
