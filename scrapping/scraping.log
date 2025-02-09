@@ -1,0 +1,12 @@
+2025-02-09 15:00:36,223 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:00:36,530 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:00:36,837 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:01:45,462 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:01:45,859 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:01:46,188 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:03:28,195 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:03:28,497 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:03:28,797 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:04:52,123 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:04:52,417 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2025-02-09 15:04:52,715 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
