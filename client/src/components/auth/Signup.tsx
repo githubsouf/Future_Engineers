@@ -88,7 +88,7 @@ export default function Signup({flipCard}: SignupProps) {
               Select your role
             </option>
             <option value="directeur">directeur</option>
-            <option value="membre">membre</option>
+            <option value="member">membre</option>
           </select>
 
           <button className="w-full bg-gradient-to-r from-emerald-500 to-purple-600 hover:from-emerald-600 hover:to-purple-700 text-white py-2 rounded-md transition-colors">
