@@ -22,13 +22,13 @@ public class JobController {
     }
 
 
-    @GetMapping("/jobs/filiere/{filiereId}")
-    public ResponseEntity<?> getJobsByFiliere(@PathVariable Long filiereId) {
-        List<JobResponseAPiDto> jobs = jobService.ReadByFiliere(filiereId);
+    @GetMapping("/jobs/filiere/{filiereLabel}")
+    public ResponseEntity<?> getJobsByFiliere(@PathVariable String filiereLabel) {
+        List<JobResponseAPiDto> jobs = jobService.ReadByFiliere(filiereLabel);
 
         if (!jobs.isEmpty()) {
             return ResponseEntity.ok(jobs);
         } else {
-            return ResponseEntity.status(404).body("Aucun job trouvé pour la filière avec l'ID : " + filiereId);
+            return ResponseEntity.status(404).body("Aucun job trouvé pour la filière avec le nom : " + filiereLabel);
         }
     }}

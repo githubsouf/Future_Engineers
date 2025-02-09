@@ -3,6 +3,7 @@ package org.example.futureengineers.Services.ServicesImp;
 
 import org.example.futureengineers.Dtos.Mapper;
 import org.example.futureengineers.Dtos.Response.JobResponseAPiDto;
+import org.example.futureengineers.Entities.Filiere;
 import org.example.futureengineers.Entities.Job;
 import org.example.futureengineers.Repositories.FiliereRepository;
 import org.example.futureengineers.Repositories.JobRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JobServiceImp implements JobService {
@@ -55,20 +57,28 @@ public class JobServiceImp implements JobService {
 
 
     @Override
-    public List<JobResponseAPiDto> ReadByFiliere(Long filiere_id) {
+    public List<JobResponseAPiDto> ReadByFiliere(String filiereLabel) {
         try {
-            if (filiereRepository.existsById(filiere_id)) {
-                List<JobResponseAPiDto> jobResponseAPiDtos=new ArrayList<>();
-                jobRepository.findByFiliereId(filiere_id).forEach(job -> jobResponseAPiDtos.add(Mapper.ConvertJobToJobResponseDto(job)));
+            // Récupérer la filière par son label
+            Optional<Filiere> filiere = filiereRepository.getFiliereByLabel(filiereLabel);
+
+            if (filiere.isPresent()) {
+                List<JobResponseAPiDto> jobResponseAPiDtos = new ArrayList<>();
+
+                // Récupérer tous les jobs liés à cette filière
+                jobRepository.findByFiliereId(filiere.get().getId())
+                        .forEach(job -> jobResponseAPiDtos.add(Mapper.ConvertJobToJobResponseDto(job)));
+
                 return jobResponseAPiDtos;
             } else {
-                System.err.println("Filière non trouvée avec l'ID : " + filiere_id);
-                return List.of();
+                System.err.println(" Filière non trouvée pour le label : " + filiereLabel);
+                return List.of(); // Retourner une liste vide si la filière n'existe pas
             }
         } catch (Exception e) {
-            System.err.println("Erreur lors de la lecture des jobs pour la filière : " + e.getMessage());
+            System.err.println(" Erreur lors de la lecture des jobs pour la filière : " + e.getMessage());
             return List.of();
         }
     }
+
 
 }

@@ -27,7 +27,7 @@ public class TaskSchedule {
         this.jobService = jobService;
     }
 
-    @Scheduled(cron = "0 0 0 * * ?") // Chaque jour à minuit
+    @Scheduled(cron = "0 49 14 * * ?") // Chaque jour à minuit
     public void FillJobsTable() {
 
 

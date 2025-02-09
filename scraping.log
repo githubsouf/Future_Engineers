@@ -1,0 +1,9 @@
+2025-02-09 14:37:12,703 - ERROR - Scraping failed: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
+2025-02-09 14:39:32,729 - ERROR - Scraping failed: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
+Traceback (most recent call last):
+  File "/Users/anashilaly/Desktop/Future_Engineers/test.py", line 135, in scrape_jobs
+    soup = BeautifulSoup(driver.page_source, "lxml")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/bs4/__init__.py", line 364, in __init__
+    raise FeatureNotFound(
+bs4.exceptions.FeatureNotFound: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?

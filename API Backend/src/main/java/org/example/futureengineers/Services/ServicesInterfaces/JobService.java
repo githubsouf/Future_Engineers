@@ -12,5 +12,5 @@ import java.util.List;
 public interface JobService {
     boolean TruncateTable();
     boolean AddJob(Job job);
-    List<JobResponseAPiDto> ReadByFiliere(Long filiere_id);
+    List<JobResponseAPiDto> ReadByFiliere(String filiereLabel);
 }
