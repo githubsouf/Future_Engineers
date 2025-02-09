@@ -26,5 +26,8 @@ public class Filiere {
     @OneToMany(mappedBy = "filiere")
     private List<Job> jobs;
 
+    @OneToMany(mappedBy = "filiere")
+    private List<Event> events;
+
 
 }

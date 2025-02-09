@@ -55,4 +55,17 @@ public class Mapper {
         JobResponseAPiDto jobResponseAPiDto=new JobResponseAPiDto(job.getTitle(), job.getCompany(), job.getLink(), job.getLocation(), job.getDescription() );
         return jobResponseAPiDto;
     }
+
+
+    public static EventResponce ConvertEventToEventResponce(Event event) {
+        if (event == null) throw new IllegalArgumentException("Event is NULL !!");
+
+        return EventResponce.builder()
+                .id(event.getId())
+                .title(event.getTitle())
+                .description(event.getDescription())
+                .imageBase64(event.getImage())
+                .filiere(event.getFiliere().getLabel())
+                .build();
+    }
 }
