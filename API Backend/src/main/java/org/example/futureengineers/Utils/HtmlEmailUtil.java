@@ -25,7 +25,7 @@ public class HtmlEmailUtil {
     @Autowired
     private SpringTemplateEngine templateEngine;
 
-    private static String subject = "Condidature pour passer un test d'orientation universitaire";
+    private static String subject = "FutureEngineers - Condidature pour passer un test d'orientation universitaire";
     private static final List<String> templateName = List.of("email-template.html", "event-email-template.html");
     private static String urlBase = "http://localhost:3000/pass-test?token=";
 
@@ -54,9 +54,12 @@ public class HtmlEmailUtil {
     public void SendEventsByMail(User user, List<EventResponce> events) throws MessagingException {
         Map<String,Object> variables = new HashMap<>();
         variables.put("events", events);
-        String userName = user.getPrenom()+ " "+user.getNom();
+        String userName = user.getPrenom() != null && user.getNom() != null
+                ?  user.getPrenom()+ " " +user.getNom()
+                : user.getEmail().split("@")[0];
         variables.put("userName", userName);
 
+        // logging
         events.forEach(eventResponce -> System.out.println("✅ "+eventResponce.getId()));
         System.out.println("✅ User : " + userName);
 
