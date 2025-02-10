@@ -1,14 +1,18 @@
 package org.example.futureengineers.Services.ServicesImp;
 
+import jakarta.mail.MessagingException;
 import org.example.futureengineers.Dtos.Mapper;
 import org.example.futureengineers.Dtos.Request.EventRequest;
 import org.example.futureengineers.Dtos.Response.EventResponce;
 import org.example.futureengineers.Entities.Event;
 import org.example.futureengineers.Entities.Filiere;
+import org.example.futureengineers.Entities.User;
 import org.example.futureengineers.Repositories.EventRepository;
 import org.example.futureengineers.Repositories.FiliereRepository;
 import org.example.futureengineers.Services.ServicesInterfaces.EventService;
+import org.example.futureengineers.Services.ServicesInterfaces.ResultService;
 import org.example.futureengineers.Utils.Files.Base64ImageConverter;
+import org.example.futureengineers.Utils.HtmlEmailUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,10 +25,14 @@ public class EventServiceImp  implements EventService {
 
     private final FiliereRepository filiereRepo;
     private final EventRepository eventRepo;
+    private final ResultService resultService;
+    private final HtmlEmailUtil emailUtil;
 
-    public EventServiceImp(FiliereRepository filiereRepo, EventRepository eventRepo) {
+    public EventServiceImp(FiliereRepository filiereRepo, EventRepository eventRepo, ResultService resultService, HtmlEmailUtil emailUtil) {
         this.filiereRepo = filiereRepo;
         this.eventRepo = eventRepo;
+        this.resultService = resultService;
+        this.emailUtil = emailUtil;
     }
 
     @Override
@@ -106,7 +114,7 @@ public class EventServiceImp  implements EventService {
     @Transactional
     public List<EventResponce> getEventByFiliere(Long filiereId) {
         Filiere filiere = filiereRepo.findById(filiereId)
-                .orElseThrow( () -> new RuntimeException("aucune filière avec l'id = " + filiereId ) );
+                .orElseThrow( () -> new IllegalArgumentException("aucune filière avec l'id = " + filiereId ) );
         List<Event> events = eventRepo.findByFiliere(filiere);
         List<EventResponce> eventResponces = new ArrayList<>();
 
@@ -122,6 +130,20 @@ public class EventServiceImp  implements EventService {
                 .orElseThrow(() -> new IllegalArgumentException("aucune event avec l'id : " + eventId));
 
         eventRepo.delete(event);
+    }
+
+    @Transactional
+    @Override
+    public void sendEmailsByField(Long filiereId) throws IllegalArgumentException, MessagingException {
+        Filiere filiere = filiereRepo.findById(filiereId)
+                .orElseThrow( () -> new IllegalArgumentException("aucune filière avec l'id = " + filiereId ) );
+
+        List<EventResponce> events = getEventByFiliere(filiereId);
+        List<User> users = resultService.getUsersFromQuizResultByFiliere(filiere);
+
+        for (User user : users)
+            emailUtil.SendEventsByMail(user,events);
+
     }
 }
 

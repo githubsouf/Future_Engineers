@@ -96,5 +96,19 @@ public class EventController {
         }
     }
 
+    // Sending mails by field of choice
+    @PostMapping("/send-mails/filiere/{filiereId}")
+    public ResponseEntity<?> sendEmailsWithEventClassedByField(@PathVariable Long filiereId) {
+        try {
+            eventService.sendEmailsByField(filiereId);
+            return ResponseEntity.ok()
+                    .body(Map.of("Message", "Emails envoyées avec succes."));
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("Erreur", e.getMessage()));
+        }
+    }
+
 
 }

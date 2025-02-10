@@ -1,8 +1,11 @@
 package org.example.futureengineers.Controllers;
 
+import jakarta.mail.MessagingException;
+import org.example.futureengineers.Config.JwtUtil;
 import org.example.futureengineers.Dtos.Request.DirecteurRequestDto;
 import org.example.futureengineers.Dtos.Response.StudentResponceDto;
 import org.example.futureengineers.Entities.Directeur;
+import org.example.futureengineers.Entities.Student;
 import org.example.futureengineers.Entities.User;
 import org.example.futureengineers.Repositories.DirecteurRepository;
 import org.example.futureengineers.Repositories.UserRepository;
@@ -10,6 +13,7 @@ import org.example.futureengineers.Services.ServicesInterfaces.DirecteurService;
 import org.example.futureengineers.Services.ServicesInterfaces.StudentService;
 import org.example.futureengineers.Utils.CurrentUserUtil;
 import org.example.futureengineers.Utils.Files.*;
+import org.example.futureengineers.Utils.HtmlEmailUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,9 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 import static org.example.futureengineers.Dtos.Mapper.ConvertDirecteurToDirecteurResponseDto;
 
@@ -34,15 +36,18 @@ public class DirecteurController {
     private final UserRepository userRepository;
     private final EmailExtractorService emailExtractorService;
     private final StudentService studentService;
+    private final HtmlEmailUtil emailUtil;
 
+    private final String urlBase = "localhost:8080/pass-exam";
 
-    public DirecteurController(DirecteurRepository directeurRepository, DirecteurService directeurService, CurrentUserUtil currentUser, UserRepository userRepository, EmailExtractorService emailExtractorService,StudentService studentService) {
+    public DirecteurController(DirecteurRepository directeurRepository, DirecteurService directeurService, CurrentUserUtil currentUser, UserRepository userRepository, EmailExtractorService emailExtractorService, StudentService studentService, HtmlEmailUtil emailUtil) {
         this.directeurRepository = directeurRepository;
         this.directeurService = directeurService;
         this.currentUser = currentUser;
         this.userRepository = userRepository;
         this.emailExtractorService = emailExtractorService;
         this.studentService = studentService;
+        this.emailUtil = emailUtil;
     }
 
     @GetMapping
@@ -67,8 +72,10 @@ public class DirecteurController {
 
 
     // ADDING STUDENTS VIA EXCEL FILE
+    // AND SENDING EMAILS WITH TOKEN TO PASS TEST
     @PostMapping("/add-students-from-excel")
-    public ResponseEntity<?> extractEmails(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> addStudentsAndSendEmails(@RequestParam("file") MultipartFile file) {
+        Dictionary<String,String> responce = new Hashtable<>();
         // le directeur authentifier
         Directeur directeur = directeurService.getDirecteurFromCurrentUser();
 
@@ -89,15 +96,38 @@ public class DirecteurController {
             File tempFile = File.createTempFile("uploaded", file.getOriginalFilename());
             file.transferTo(tempFile);
             // Extraire les emails
-            List<String> emails = emailExtractorService.extractFirstColumnWithEmails(tempFile.getAbsolutePath());
+            List<String> emails = emailExtractorService.extractEmailsFromExcel(tempFile);
 
             // Supprimer le fichier temporaire
             tempFile.delete();
 
             // sauvgarder les students
-            studentService.CreateStudentsFromEmails(emails,directeur);
-            // envoyer des e-mail au students
-            return ResponseEntity.ok(emails);
+        List<Student> students = studentService.CreateStudentsFromEmails(emails,directeur);
+        // generation de token pour chaque etudiant
+        Map<String,String> studentsTokens = new HashMap<>();
+        students.forEach(student -> {
+            String studentMail = student.getUser().getEmail();
+            studentsTokens.put(studentMail, JwtUtil.generateToken(studentMail,"student"));
+        });
+        // envoyer des e-mail au students
+        studentsTokens.forEach((email,token) -> {
+            Map<String,Object> dataToSendInEmail = new HashMap<>();
+            // prepare data to send by email
+            String studentNom = email.split("@")[0];
+            dataToSendInEmail.put("studentNom",studentNom);
+            dataToSendInEmail.put("studentEmail", email);
+            dataToSendInEmail.put("link", token);
+            dataToSendInEmail.put("directeurNom", directeur.getUser().getNom());
+            dataToSendInEmail.put("directeurPrenom", directeur.getUser().getPrenom());
+            try {
+                // sending emails with token
+                emailUtil.sendHtmlEmail(email, dataToSendInEmail);
+            } catch (MessagingException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        responce.put("Message","Students created, and e-mails sended with success.");
+        return ResponseEntity.ok(responce);
 
 
         } catch (Exception e) {

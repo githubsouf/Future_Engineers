@@ -11,6 +11,4 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByFiliere(Filiere filiere);
-
-    List<Event> findByFiliereId(Long filiereId);
 }

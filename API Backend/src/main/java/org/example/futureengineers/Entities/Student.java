@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -25,4 +27,7 @@ public class Student {
 
     @Column(name = "releve_note",columnDefinition = "TEXT")
     private String releveDeNote;
+
+    @OneToMany(mappedBy = "student")
+    private List<Quiz> quizzes ;
 }
